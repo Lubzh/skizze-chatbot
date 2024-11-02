@@ -1,0 +1,66 @@
+def plan_unterrichtseinheit():
+    # Erste Runde Fragen zur Definition des Grundgerüsts der Unterrichtseinheit
+    grundgeruest = {}
+    grundgeruest['Dauer'] = input("Wie lange soll die Unterrichtseinheit dauern? ")
+    grundgeruest['Zielgruppe'] = input("Wer ist die Zielgruppe? ")
+    grundgeruest['Thema'] = input("Welches Thema soll behandelt werden? ")
+    grundgeruest['Faktwissen'] = input("Gibt es zum Thema spezifisches Faktwissen, das berücksichtigt werden soll? ")
+    grundgeruest['Niveau'] = input("Welches Ausgangsniveau haben die Lernenden? ")
+    grundgeruest['Hauptziele'] = input("Was sind die Hauptziele der Unterrichtseinheit? ")
+    
+    # Zweite Runde Fragen für die einzelnen Phasen der Unterrichtseinheit
+    unterrichtsphasen = {
+        "Einführung": {
+            "Teilziele": {
+                "Frage": "Welche spezifischen Lernziele sollen in dieser Phase erreicht werden?",
+                "Antwortoptionen": ["Vorwissen aktivieren", "Thema einführen", "Konzepte verständlich machen", "Lernziele erklären"]
+            },
+            "Übungen und Aufgaben": {
+                "Frage": "Welche Art von Übungen und Aufgaben möchtest du hier einsetzen?",
+                "Antwortoptionen": ["Brainstorming", "Diskussion", "Mindmap", "Lesetext"]
+            },
+            "Soziale und Arbeitsformen": {
+                "Frage": "Welche sozialen und Arbeitsformen bevorzugst du in dieser Phase?",
+                "Antwortoptionen": ["Kleingruppenarbeit", "Partnerarbeit", "Einzelarbeit", "Plenumsdiskussion"]
+            },
+            "Medien": {
+                "Frage": "Welche Medien möchtest du in dieser Phase einsetzen?",
+                "Antwortoptionen": ["Whiteboard", "Digitale Tools", "Flipchart", "Präsentation"]
+            },
+            "Materialien": {
+                "Frage": "Welche Materialien sollen zur Unterstützung bereitgestellt werden?",
+                "Antwortoptionen": ["Handouts", "Diagramme", "Fragenkatalog", "Einführungstext"]
+            }
+        }
+    }
+
+    # Antworten für die Phasen der Unterrichtseinheit sammeln
+    phasen_antworten = {}
+    for phase, fragen in unterrichtsphasen.items():
+        print(f"\n--- Phase: {phase} ---")
+        phasen_antworten[phase] = {}
+        for schluessel, inhalt in fragen.items():
+            print(inhalt["Frage"])
+            print("Antwortoptionen:", ", ".join(inhalt["Antwortoptionen"]))
+            antwort = input("Deine Antwort (oder eigene Idee eingeben): ")
+            phasen_antworten[phase][schluessel] = antwort
+    
+    # Möglichkeit zur Reflexion und Überarbeitung
+    print("\nMöchtest du deine bisherigen Antworten reflektieren und überarbeiten?")
+    ueberarbeitung = input("Ja oder Nein: ")
+    if ueberarbeitung.lower() == "ja":
+        for phase, inhalte in phasen_antworten.items():
+            print(f"\n--- Überarbeitung Phase: {phase} ---")
+            for schluessel, antwort in inhalte.items():
+                neue_antwort = input(f"{schluessel} ({antwort}) - Neue Antwort (leer lassen, um zu behalten): ")
+                if neue_antwort:
+                    phasen_antworten[phase][schluessel] = neue_antwort
+
+    # Zusammenfassung der Unterrichtsskizze
+    print("\n--- Zusammenfassende Unterrichtsskizze ---")
+    print("Grundgerüst:")
+    for k, v in grundgeruest.items():
+        print(f"{k}: {v}")
+    
+    print("\nPhasen:")
+    for phase, inhalte in phasen_antworten.ite
